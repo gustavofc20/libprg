@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "header/lab_2.h"
 #include <stdlib.h>
 
 typedef struct  pilha {
