@@ -18,6 +18,13 @@ pilha_t* criar_pilha(int cap) {
     return p;
 }
 //empilhar
+int empilhar(pilha_t* p, int valor) {
+
+    p->topo++;
+    p->elemnetos[p->topo]=valor;
+
+    return 0;
+}
 //desempilhar
 //tamanho
 //vazia
