@@ -18,7 +18,7 @@ pilha_t* criar_pilha(int cap) {
     return p;
 }
 //empilhar
-pilha_t* empilhar(pilha_t* p, int valor) {
+int empilhar(pilha_t* p, int valor) {
 
     p->topo++;
     p->elementos[p->topo] = valor;
@@ -26,19 +26,27 @@ pilha_t* empilhar(pilha_t* p, int valor) {
     return 0;
 }
 //desempilhar
-pilha_t* desempilhar(pilha_t* p) {
+int desempilhar(pilha_t* p, int* valor) {
 
-    p->elementos[p->topo];
+    *valor = p->elementos[p->topo];
     p->topo--;
 
     return 0;
 }
 //tamanho
-pilha_t* tamanho(pilha_t* p) {
-
-    p->topo++;
-
-    return p;
+int tamanho(pilha_t* p) {
+    return p->topo+1;
 }
 //vazia
+int vazia(pilha_t* p) {
+    p->topo = -1;
+
+    return 0;
+}
 //destruir
+int destruir(pilha_t* p) {
+    free(p->elementos);
+    free(p);
+
+    return 0;
+}
