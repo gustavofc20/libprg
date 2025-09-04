@@ -26,9 +26,9 @@ int empilhar(pilha_t* p, int valor) {
     return 0;
 }
 //desempilhar
-int desempilhar(pilha_t* p, int* valor) {
+int desempilhar(pilha_t* p) {
 
-    *valor = p->elementos[p->topo];
+    p->elementos[p->topo];
     p->topo--;
 
     return 0;
