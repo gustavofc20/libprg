@@ -28,10 +28,10 @@ int empilhar(pilha_t* p, int valor) {
 //desempilhar
 int desempilhar(pilha_t* p) {
 
-    p->elementos[p->topo];
+    int valor = p->elementos[p->topo];
     p->topo--;
 
-    return 0;
+    return valor;
 }
 //tamanho
 int tamanho(pilha_t* p) {
