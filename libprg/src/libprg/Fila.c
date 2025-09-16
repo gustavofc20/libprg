@@ -50,9 +50,9 @@ fila_t* criar_fila(int capacidade) {
         exit(EXIT_FAILURE);
     }
 
-    fila->tamanho--;
-    fila->inicio = (fila->inicio + 1) % fila->capacidade;
     int valor = fila->elementos[fila->inicio];
+    fila->inicio = (fila->inicio + 1) % fila->capacidade;
+    fila->tamanho--;
 
     return valor;
 }
