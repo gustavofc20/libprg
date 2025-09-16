@@ -23,8 +23,8 @@ int destruir(pilha_t* p);
 typedef struct fila fila_t;
 
 fila_t* criar_fila(int capacidade);
-int enfilerar(fila_t* fila, int valor);
-int desenfilerar(fila_t* fila);
+int enfileirar(fila_t* fila, int valor);
+int desenfileirar(fila_t* fila);
 int fila_inicio(fila_t* fila);
 int fila_fim(fila_t* fila);
 int fila_tamanho(fila_t* fila);

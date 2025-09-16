@@ -29,7 +29,7 @@ fila_t* criar_fila(int capacidade) {
 
 // enfileirar
 
-    int enfilerar(fila_t* fila, int valor) {
+    int enfileirar(fila_t* fila, int valor) {
 
     if (fila_cheia(fila)) {
         exit(EXIT_FAILURE);
@@ -44,7 +44,7 @@ fila_t* criar_fila(int capacidade) {
 
 // desenfileirar
 
-    int desenfilerar(fila_t* fila)
+    int desenfileirar(fila_t* fila)
 {
     if (fila_vazia(fila)) {
         exit(EXIT_FAILURE);
