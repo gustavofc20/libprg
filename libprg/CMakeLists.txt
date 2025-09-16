@@ -15,7 +15,7 @@ add_library(libprg
         src/libprg/pilha.c
         src/include/libprg/libprg.h
         src/libprg/Fila.c
-        src/libprg/lista.c)
+        src/libprg/lista_linear.c)
 target_sources(libprg PUBLIC ${SOURCES})
 target_include_directories(libprg PUBLIC ${CMAKE_CURRENT_LIST_DIR}/src/include)
 

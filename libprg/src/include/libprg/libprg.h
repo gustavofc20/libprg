@@ -32,4 +32,16 @@ bool fila_cheia(fila_t* fila);
 bool fila_vazia(fila_t* fila);
 int fila_destruir(pilha_t* p);
 
+/*--- LISTA ---*/
+
+typedef struct  lista_linear lista_linear_t;
+
+lista_linear_t* criar_lista_linear(int capacidade);
+int lista_inserir(lista_linear_t* lista, int valor);
+
+int lista_buscar(lista_linear_t* lista, int valor);
+
+bool lista_vazia(lista_linear_t* lista);
+bool lista_cheia(lista_linear_t* lista);
+
 #endif
