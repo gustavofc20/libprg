@@ -27,11 +27,7 @@ lista_linear_t* criar_lista_linear(int capacidade) {
 int lista_inserir(lista_linear_t* lista, int valor) {
 
     if (lista_cheia(lista)) {
-
-        lista->capacidade++;
-
-        lista->elementos[lista->tamanho] = valor;
-        lista->tamanho++;
+        exit(EXIT_FAILURE);
     }
 
     lista->elementos[lista->tamanho] = valor;
@@ -52,7 +48,7 @@ int lista_remover(lista_linear_t* lista, int valor) {
         return -1;
     }
 
-    lista->elementos[lista_buscar(lista, valor)] = lista->elementos[lista->tamanho];
+    lista->elementos[lista_buscar(lista, valor)] = lista->elementos[lista->tamanho-1];
     lista->tamanho--;
 
     return 0;
@@ -89,10 +85,40 @@ bool lista_cheia(lista_linear_t* lista) {
 
 // destruir
 
-int lista_destruir(pilha_t* lista){
+    int lista_destruir(lista_linear_t* lista){
 
     free(lista->elementos);
     free(lista);
 
     return 0;
+}
+
+//teste
+
+    int lista_remover_imprimir(lista_linear_t* lista)
+{
+    if (lista_vazia(lista)) {
+        exit(EXIT_FAILURE);
+    }
+
+    int valor = lista->elementos[lista->tamanho-1];
+    lista->tamanho--;
+
+    return valor;
+}
+
+//tamanho
+
+int lista_tamanho(lista_linear_t* lista){
+
+    return lista->tamanho;
+}
+
+//primeiro
+
+int lista_primeiro_indicie(lista_linear_t* lista) {
+
+    int valor = lista->elementos[0];
+
+    return valor;
 }
