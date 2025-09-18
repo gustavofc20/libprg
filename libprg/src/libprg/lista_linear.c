@@ -7,17 +7,24 @@ typedef struct  lista_linear {
     int* elementos;
     int tamanho;
     int capacidade;
+    int ordenada;
 }lista_linear_t;
+
+void inserir_nao_ordenada(lista_linear_t* lista, int valor);
+int lista_buscar_ordenada(lista_linear_t* lista, int valor);
+void inserir_ordenada(lista_linear_t* lista, int valor);
+int lista_buscar_nao_ordenada(lista_linear_t* lista, int valor);
 
 // criar
 
-lista_linear_t* criar_lista_linear(int capacidade) {
+lista_linear_t* criar_lista_linear(int capacidade, bool ordenada) {
 
     lista_linear_t* lista = malloc(sizeof(lista_linear_t));
 
     lista->elementos = malloc(capacidade * sizeof(int));
     lista->tamanho = 0;
     lista->capacidade= capacidade;
+    lista->ordenada = ordenada;
 
     return lista;
 }
@@ -30,8 +37,13 @@ int lista_inserir(lista_linear_t* lista, int valor) {
         exit(EXIT_FAILURE);
     }
 
-    lista->elementos[lista->tamanho] = valor;
-    lista->tamanho++;
+
+    if (lista->ordenada) {
+        inserir_ordenada(lista, valor);
+    }
+    else {
+        inserir_nao_ordenada(lista, valor);
+    }
 
     return 0;
 }
@@ -57,18 +69,10 @@ int lista_remover(lista_linear_t* lista, int valor) {
 // buscar
 int lista_buscar(lista_linear_t* lista, int valor) {
 
-    int indice = 0;
-
-    while (indice < lista->tamanho) {
-
-        if (lista->elementos[indice] == valor) {
-            return indice;
-        }
-
-        indice++;
+    if (lista->ordenada) {
+        return lista_buscar_nao_ordenada(lista, valor);
     }
-
-    return -1;
+    return lista_buscar_ordenada(lista, valor);
 }
 // vazia
 
@@ -121,4 +125,59 @@ int lista_primeiro_indicie(lista_linear_t* lista) {
     int valor = lista->elementos[0];
 
     return valor;
+}
+
+/*--- LISTA LINEAR ---*/
+
+void inserir_nao_ordenada(lista_linear_t* lista, int valor) {
+
+    lista->elementos[lista->tamanho] = valor;
+    lista->tamanho++;
+
+}
+
+int lista_buscar_nao_ordenada(lista_linear_t* lista, int valor) {
+
+    int indice = 0;
+
+    while (indice < lista->tamanho) {
+
+        if (lista->elementos[indice] == valor) {
+            return indice;
+        }
+
+        indice++;
+    }
+
+    return -1;
+}
+
+/*--- LISTA ORDENADA ---*/
+
+void inserir_ordenada(lista_linear_t* lista, int valor) {
+
+    for (int i = lista->tamanho - 1; i>+0; --i) {
+        if (lista->elementos[i] < valor) {
+            lista->elementos[i+1] = valor;
+            break;
+        }
+        lista->elementos[i+1] = lista->elementos[i];
+    }
+    lista->tamanho++;
+}
+
+int lista_buscar_ordenada(lista_linear_t* lista, int valor) {
+
+    int indice = 0;
+
+    while (indice < lista->tamanho) {
+
+        if (lista->elementos[indice] == valor) {
+            return indice;
+        }
+
+        indice++;
+    }
+
+    return -1;
 }
