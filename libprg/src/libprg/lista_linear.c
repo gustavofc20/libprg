@@ -168,15 +168,26 @@ void inserir_ordenada(lista_linear_t* lista, int valor) {
 
 int lista_buscar_ordenada(lista_linear_t* lista, int valor) {
 
-    int indice = 0;
+    int inicio = 0;
+    int final = lista->tamanho-1;
 
-    while (indice < lista->tamanho) {
+    while (inicio<=final) {
 
-        if (lista->elementos[indice] == valor) {
-            return indice;
+        int meio = (inicio+final)/2;
+
+        if (lista->elementos[meio] == valor) {
+            return meio;
         }
 
-        indice++;
+        if (lista->elementos[meio] < valor) {
+
+            inicio = meio +1;
+        }
+
+        if (lista->elementos[meio] > valor) {
+
+            final = meio - 1;
+        }
     }
 
     return -1;
