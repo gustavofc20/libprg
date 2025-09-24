@@ -60,8 +60,22 @@ int lista_remover(lista_linear_t* lista, int valor) {
         return -1;
     }
 
-    lista->elementos[lista_buscar(lista, valor)] = lista->elementos[lista->tamanho-1];
-    lista->tamanho--;
+    if (lista->ordenada) {
+
+        int indicie = lista_buscar_ordenada(lista, valor);
+
+        for (int i = indicie; i < lista->tamanho-1; i++) {
+
+        lista->elementos[i]=lista->elementos[i+1];
+
+        }
+        lista->tamanho--;
+    }
+    else {
+
+        lista->elementos[lista_buscar(lista, valor)] = lista->elementos[lista->tamanho-1];
+        lista->tamanho--;
+    }
 
     return 0;
 }
