@@ -46,5 +46,6 @@ int lista_destruir(lista_linear_t* lista);
 int lista_remover_imprimir(lista_linear_t* lista);
 int lista_tamanho(lista_linear_t* lista);
 int lista_primeiro_indicie(lista_linear_t* lista);
+int lista_aponta_valor(lista_linear_t* lista, int indice);
 
 #endif

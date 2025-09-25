@@ -14,6 +14,8 @@ void inserir_nao_ordenada(lista_linear_t* lista, int valor);
 int lista_buscar_ordenada(lista_linear_t* lista, int valor);
 void inserir_ordenada(lista_linear_t* lista, int valor);
 int lista_buscar_nao_ordenada(lista_linear_t* lista, int valor);
+int lista_remover_ordenada(lista_linear_t* lista, int valor);
+int lista_remover_não_ordenada(lista_linear_t* lista, int valor);
 
 // criar
 
@@ -62,19 +64,10 @@ int lista_remover(lista_linear_t* lista, int valor) {
 
     if (lista->ordenada) {
 
-        int indicie = lista_buscar_ordenada(lista, valor);
-
-        for (int i = indicie; i < lista->tamanho-1; i++) {
-
-        lista->elementos[i]=lista->elementos[i+1];
-
-        }
-        lista->tamanho--;
+        lista_remover_ordenada(lista, valor);
     }
     else {
-
-        lista->elementos[lista_buscar(lista, valor)] = lista->elementos[lista->tamanho-1];
-        lista->tamanho--;
+        lista_remover_não_ordenada(lista, valor);
     }
 
     return 0;
@@ -141,6 +134,16 @@ int lista_primeiro_indicie(lista_linear_t* lista) {
     return valor;
 }
 
+//apontar
+int lista_aponta_valor(lista_linear_t* lista, int indice) {
+
+    int valor;
+
+    valor = lista->elementos[indice];
+
+    return valor;
+}
+
 /*--- LISTA LINEAR ---*/
 
 void inserir_nao_ordenada(lista_linear_t* lista, int valor) {
@@ -164,6 +167,14 @@ int lista_buscar_nao_ordenada(lista_linear_t* lista, int valor) {
     }
 
     return -1;
+}
+
+int lista_remover_não_ordenada(lista_linear_t* lista, int valor) {
+
+    lista->elementos[lista_buscar(lista, valor)] = lista->elementos[lista->tamanho-1];
+    lista->tamanho--;
+
+    return 0;
 }
 
 /*--- LISTA ORDENADA ---*/
@@ -205,4 +216,18 @@ int lista_buscar_ordenada(lista_linear_t* lista, int valor) {
     }
 
     return -1;
+}
+
+int lista_remover_ordenada(lista_linear_t* lista, int valor) {
+
+    int indicie = lista_buscar_ordenada(lista, valor);
+
+    for (int i = indicie; i < lista->tamanho-1; i++) {
+
+        lista->elementos[i]=lista->elementos[i+1];
+
+    }
+    lista->tamanho--;
+
+    return 0;
 }
