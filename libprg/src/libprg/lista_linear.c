@@ -39,7 +39,6 @@ int lista_inserir(lista_linear_t* lista, int valor) {
         exit(EXIT_FAILURE);
     }
 
-
     if (lista->ordenada) {
         inserir_ordenada(lista, valor);
     }
@@ -181,10 +180,9 @@ int lista_remover_não_ordenada(lista_linear_t* lista, int valor) {
 
 void inserir_ordenada(lista_linear_t* lista, int valor) {
 
-    for (int i = lista->tamanho - 1; i>+0; --i) {
+    for (int i = lista->tamanho - 1; i>0; --i) {
         if (lista->elementos[i] < valor) {
             lista->elementos[i+1] = valor;
-            break;
         }
         lista->elementos[i+1] = lista->elementos[i];
     }
