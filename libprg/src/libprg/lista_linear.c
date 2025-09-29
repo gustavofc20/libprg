@@ -1,4 +1,4 @@
-#include <stdbool.h>
+ #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "libprg/libprg.h"
@@ -180,14 +180,22 @@ int lista_remover_não_ordenada(lista_linear_t* lista, int valor) {
 
 void inserir_ordenada(lista_linear_t* lista, int valor) {
 
-    for (int i = lista->tamanho - 1; i>0; --i) {
-        if (lista->elementos[i] < valor) {
-            lista->elementos[i+1] = valor;
-        }
-        lista->elementos[i+1] = lista->elementos[i];
+    if (lista->tamanho == 0) {
+        lista->elementos[0] = valor;
     }
+
+    int i;
+
+    for (i = lista->tamanho-1; i>=0 && lista->elementos[i] > valor; --i) {
+
+        lista->elementos[i+1] = lista->elementos[i];
+
+    }
+
+    lista->elementos[i+1]=valor;
     lista->tamanho++;
 }
+
 
 int lista_buscar_ordenada(lista_linear_t* lista, int valor) {
 
