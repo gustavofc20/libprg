@@ -48,4 +48,13 @@ int lista_tamanho(lista_linear_t* lista);
 int lista_primeiro_indicie(lista_linear_t* lista);
 int lista_aponta_valor(lista_linear_t* lista, int indice);
 
+/*--- LISTA ENCADEADA ---*/
+
+typedef struct no no_t;
+
+no_t* lista_encadeada_criar(int valor);
+void adicionar(no_t** inicio, int valor);
+no_t* lista_encadeada_buscar(no_t** inicio, int valor);
+void remover(no_t** inicio, int valor);
+
 #endif

@@ -10,7 +10,7 @@ typedef struct no {
 
 //criar
 
-no_t* criar_lista_encadeada(int valor) {
+no_t* lista_encadeada_criar(int valor) {
 
     no_t* no = malloc(sizeof(no_t));
     no->valor = valor;
@@ -21,14 +21,68 @@ no_t* criar_lista_encadeada(int valor) {
 
 //adicinar
 
-no_t* adicionar(no_t* inicio, int valor) {
+void adicionar(no_t** inicio, int valor) {
 
-    no_t* novo_no = criar_lista_encadeada(valor);
-    novo_no->proximo=inicio;
-    inicio=novo_no;
+    no_t* novo_no = lista_encadeada_criar(valor);
+    novo_no->proximo = *inicio;
+    *inicio=novo_no;
+}
 
-    return inicio;
+//adicinar_circular
+void adicionar_circular(no_t** inicio, int valor) {
+
+    no_t* novo_no = lista_encadeada_criar(valor);
+    novo_no->proximo=*inicio;
+
+    no_t* ultimo = *inicio;
+
+}
+
+//buscar
+
+no_t* lista_encadeada_buscar(no_t** inicio, int valor) {
+
+    no_t* atual = *inicio;
+
+    while (atual) {
+
+        if (atual->valor==valor) {
+            return *inicio;
+        }
+
+        atual = atual->proximo;
+
+    }
+
+
+    return NULL;
 }
 //remover
-//buscar
+
+void remover(no_t** inicio, int valor) {
+
+    no_t* atual = *inicio;
+    no_t* anterior = NULL;
+
+    while (atual) {
+        if (atual->valor == valor) {
+            if (anterior) {
+                anterior->proximo=atual->proximo;
+            }
+            else {
+                *inicio = atual->proximo;
+            }
+            free(atual);
+            break;
+        }
+
+        anterior = atual;
+        atual = atual->proximo;
+    }
+}
+
 //destruir
+int lista_encadeada_destruir(no_t** inicio){
+
+    return 0;
+}
