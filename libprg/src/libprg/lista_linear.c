@@ -76,9 +76,9 @@ int lista_remover(lista_linear_t* lista, int valor) {
 int lista_buscar(lista_linear_t* lista, int valor) {
 
     if (lista->ordenada) {
-        return lista_buscar_nao_ordenada(lista, valor);
+        return lista_buscar_ordenada(lista, valor);
     }
-    return lista_buscar_ordenada(lista, valor);
+    return lista_buscar_nao_ordenada(lista, valor);
 }
 // vazia
 
@@ -170,7 +170,7 @@ int lista_buscar_nao_ordenada(lista_linear_t* lista, int valor) {
 
 int lista_remover_não_ordenada(lista_linear_t* lista, int valor) {
 
-    lista->elementos[lista_buscar(lista, valor)] = lista->elementos[lista->tamanho-1];
+    lista->elementos[lista_buscar_nao_ordenada(lista, valor)] = lista->elementos[lista->tamanho-1];
     lista->tamanho--;
 
     return 0;
