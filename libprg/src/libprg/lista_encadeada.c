@@ -33,10 +33,17 @@ no_t* lista_encadeada_circular_criar(int valor) {
 //adicinar
 
 void adicionar_no(no_t** inicio, int valor) {
-
     no_t* novo_no = lista_encadeada_criar(valor);
-    novo_no->proximo = *inicio;
-    *inicio=novo_no;
+
+    if (*inicio == NULL) {
+        *inicio = novo_no;
+    } else {
+        no_t* atual = *inicio;
+        while (atual->proximo != NULL) {
+            atual = atual->proximo;
+        }
+        atual->proximo = novo_no;
+    }
 }
 
 //adicinar_circular
