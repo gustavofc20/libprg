@@ -53,8 +53,15 @@ int lista_aponta_valor(lista_linear_t* lista, int indice);
 typedef struct no no_t;
 
 no_t* lista_encadeada_criar(int valor);
-void adicionar(no_t** inicio, int valor);
+no_t* lista_encadeada_circular_criar(int valor);
 no_t* lista_encadeada_buscar(no_t** inicio, int valor);
-void remover(no_t** inicio, int valor);
+void adicionar_no(no_t** inicio, int valor);
+void adicionar_circular(no_t** inicio, int valor);
+void lista_encadeada_remover(no_t** inicio, int valor);
+int lista_encadeada_tamanho(no_t* inicio);
+int apontar_elemento_lista_encadeada(no_t** inicio, int indice);
+int lista_encadeada_destruir(no_t** inicio);
+int lista_encadeada_circular_destruir(no_t** inicio);
+
 
 #endif
