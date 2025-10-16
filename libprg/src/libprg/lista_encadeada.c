@@ -71,7 +71,7 @@ no_t* lista_encadeada_buscar(no_t** inicio, int valor) {
     while (atual) {
 
         if (atual->valor==valor) {
-            return *inicio;
+            return atual;
         }
 
         atual = atual->proximo;

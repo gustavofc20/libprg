@@ -63,5 +63,12 @@ int apontar_elemento_lista_encadeada(no_t** inicio, int indice);
 int lista_encadeada_destruir(no_t** inicio);
 int lista_encadeada_circular_destruir(no_t** inicio);
 
+/*--- LISTA ENCADEADA DUPLA ---*/
+
+typedef struct no_duplo no_duplo_t;
+
+no_duplo_t* lista_encadeada_dupla_criar(int valor);
+no_duplo_t* lista_encadeada_dupla_buscar(no_duplo_t** inicio, int valor);
+void lista_encadeada_dupla_remover(no_duplo_t** inicio, int valor);
 
 #endif
