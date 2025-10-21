@@ -5,11 +5,7 @@
 
 /*--- PILHA ---*/
 
-typedef struct  pilha {
-    int* elementos;
-    int topo;
-    int capacidade;
-}pilha_t;
+typedef struct  pilha pilha_t;
 
 pilha_t* criar_pilha(int cap);
 int empilhar(pilha_t* p, int valor);
@@ -62,6 +58,10 @@ int lista_encadeada_tamanho(no_t* inicio);
 int apontar_elemento_lista_encadeada(no_t** inicio, int indice);
 int lista_encadeada_destruir(no_t** inicio);
 int lista_encadeada_circular_destruir(no_t** inicio);
+
+int lista_inserir_na_posicao(lista_linear_t* lista, int indice, int valor);
+int lista_remover_na_posicao(lista_linear_t* lista, int indice);
+int lista_buscar_na_posicao(lista_linear_t* lista, int indice);
 
 /*--- LISTA ENCADEADA DUPLA ---*/
 

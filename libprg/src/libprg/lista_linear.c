@@ -36,7 +36,8 @@ lista_linear_t* criar_lista_linear(int capacidade, bool ordenada) {
 int lista_inserir(lista_linear_t* lista, int valor) {
 
     if (lista_cheia(lista)) {
-        exit(EXIT_FAILURE);
+        lista->elementos=realloc(lista->elementos, sizeof(int) * lista->capacidade*2);
+            lista->capacidade*=2;
     }
 
     if (lista->ordenada) {
@@ -236,4 +237,40 @@ int lista_remover_ordenada(lista_linear_t* lista, int valor) {
     lista->tamanho--;
 
     return 0;
+}
+/*--- NA POSSIÇÃO DA LISTA ---*/
+
+ int limitar_posicao(lista_linear_t *lista, int indice) {
+     if (indice > lista->tamanho) {
+             return lista->tamanho;
+     }
+     if (indice < 0) {
+             return 0;
+     }
+ }
+
+int lista_inserir_na_posicao(lista_linear_t* lista, int indice, int valor) {
+
+    limitar_posicao(lista, indice);
+
+    lista_inserir(lista, lista->elementos[indice]);
+    lista->elementos[indice] = valor;
+
+    return 0;
+
+}
+
+int lista_remover_na_posicao(lista_linear_t* lista, int indice) {
+
+    limitar_posicao(lista, indice);
+
+    lista_remover(lista, lista->elementos[indice]);
+
+    return 0;
+
+}
+
+int lista_buscar_na_posicao(lista_linear_t* lista, int indice) {
+
+    return lista->elementos[indice];
 }
