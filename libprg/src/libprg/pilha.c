@@ -34,7 +34,7 @@ int desempilhar(pilha_t* p) {
     return valor;
 }
 //tamanho
-int tamanho(pilha_t* p) {
+int pilha_tamanho(pilha_t* p) {
     return p->topo+1;
 }
 //vazia
