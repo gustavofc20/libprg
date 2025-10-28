@@ -85,7 +85,7 @@ fila_t* criar_fila(int capacidade) {
 }
 // destruir_fila
 
-    int fila_destruir(pilha_t* fila){
+    int fila_destruir(fila_t* fila){
 
     free(fila->elementos);
     free(fila);
