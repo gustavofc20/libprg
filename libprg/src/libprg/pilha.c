@@ -39,9 +39,9 @@ int tamanho(pilha_t* p) {
 }
 //vazia
 int vazia(pilha_t* p) {
-    p->topo = -1;
-
-    return 0;
+    if (p->topo == -1)
+        return 0;
+    return -1;
 }
 //destruir
 int destruir(pilha_t* p) {
