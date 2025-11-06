@@ -5,8 +5,9 @@
 
 int bubble_sort(int* array, int tamanho) {
     int atual = array[0];
+    int tamnaho_qua=tamanho*tamanho;
 
-    for (int i = 1; i < tamanho^2; i++) {
+    for (int i = 1; i < tamnaho_qua; i++) {
         int proximo=array[i];
 
         if (atual<proximo) {
