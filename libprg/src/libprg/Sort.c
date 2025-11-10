@@ -5,22 +5,18 @@
 
 int bubble_sort(int* array, int tamanho) {
     int atual = array[0];
-    int tamnaho_qua=tamanho*tamanho;
 
-    for (int i = 1; i < tamnaho_qua; i++) {
-        int proximo=array[i];
+    for (int i = 0; i < tamanho-1; i++) {
+        for (int j = 0; j < tamanho-i-1; j++) {
+            if (array[j] > array[j + 1]) {
 
-        if (atual<proximo) {
-            atual = array[i];
-            continue;
-        }
-
-        if (atual>proximo) {
-            int aux = array[i];
-            array[i] = array[i-1];
-            array[i-1] = aux;
+                int aux = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = aux;
+            }
         }
     }
+
 
     return 0;
 }

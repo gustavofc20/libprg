@@ -71,4 +71,8 @@ no_duplo_t* lista_encadeada_dupla_criar(int valor);
 no_duplo_t* lista_encadeada_dupla_buscar(no_duplo_t** inicio, int valor);
 void lista_encadeada_dupla_remover(no_duplo_t** inicio, int valor);
 
+/*--- SORT'S ---*/
+
+int bubble_sort(int* array, int tamanho);
+
 #endif
