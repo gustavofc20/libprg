@@ -74,5 +74,7 @@ void lista_encadeada_dupla_remover(no_duplo_t** inicio, int valor);
 /*--- SORT'S ---*/
 
 int bubble_sort(int* array, int tamanho);
+int insertion_sort(int* array, int tamanho);
+int selection_sort(int* array, int tamanho);
 
 #endif
