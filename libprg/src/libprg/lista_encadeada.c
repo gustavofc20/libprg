@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include "libprg/libprg.h"
 
-typedef struct no {
+typedef struct no_b {
     int valor;
-    struct no* proximo;
+    struct no_b* proximo;
 } no_t;
 
 //criar

@@ -46,7 +46,7 @@ int lista_aponta_valor(lista_linear_t* lista, int indice);
 
 /*--- LISTA ENCADEADA ---*/
 
-typedef struct no no_t;
+typedef struct no_b no_t;
 
 no_t* lista_encadeada_criar(int valor);
 no_t* lista_encadeada_circular_criar(int valor);
