@@ -16,4 +16,16 @@ int desempilhar(pilha_t *pilha);
 int topo_pilha(pilha_t *pilha);
 int tamanho_pilha(pilha_t *pilha);
 
+//--------fila--------//
+
+typedef struct fila fila_t;
+
+fila_t* fila_cria(int capacidade);
+
+int fila_vazio(fila_t* fila);
+int fila_cheia(fila_t* fila);
+
+void enfileira(fila_t* fila, int valor);
+int desenfileira(fila_t* fila);
+
 #endif
