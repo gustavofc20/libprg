@@ -25,7 +25,7 @@ fila_t* fila_cria(int capacidade);
 int fila_vazio(fila_t* fila);
 int fila_cheia(fila_t* fila);
 
-void enfileira(fila_t* fila, int valor);
+int enfileira(fila_t* fila, int valor);
 int desenfileira(fila_t* fila);
 int fila_inicio(fila_t* fila);
 int fila_fim(fila_t* fila);

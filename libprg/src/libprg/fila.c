@@ -35,7 +35,7 @@ int fila_vazio(fila_t* fila) {
 }
 //cheia
 int fila_cheia(fila_t* fila) {
-    if (fila->capacidade == fila->tamanho) {
+    if (fila->tamanho >= fila->capacidade) {
         return 1;
     }
     return 0;
@@ -44,15 +44,17 @@ int fila_cheia(fila_t* fila) {
 //enfileirar
 
 
-void enfileira(fila_t* fila, int valor) {
+int enfileira(fila_t* fila, int valor) {
 
     if (fila_cheia(fila)) {
-        return;
+        return -1;
     }
 
     fila->elementos[fila->fim] = valor;
-    fila->fim = (fila->fim + 1) % fila->tamanho;
+    fila->fim = (fila->fim + 1) % fila->capacidade;
     fila->tamanho++;
+
+    return 0;
 }
 
 //desenfileirar
