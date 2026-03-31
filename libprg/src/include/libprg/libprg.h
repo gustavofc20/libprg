@@ -22,13 +22,14 @@ typedef struct fila fila_t;
 
 fila_t* fila_cria(int capacidade);
 
-int fila_vazio(fila_t* fila);
+int fila_vazia(fila_t* fila);
 int fila_cheia(fila_t* fila);
 
 int enfileira(fila_t* fila, int valor);
 int desenfileira(fila_t* fila);
 int fila_inicio(fila_t* fila);
 int fila_fim(fila_t* fila);
+int fila_busca(fila_t* fila, int posicao);
 int fila_tamanho(fila_t* fila);
 void fila_destruir(fila_t* fila);
 

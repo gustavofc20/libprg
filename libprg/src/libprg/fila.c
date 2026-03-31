@@ -27,7 +27,7 @@ fila_t* fila_cria(int capacidade) {
 }
 
 //vazia
-int fila_vazio(fila_t* fila) {
+int fila_vazia(fila_t* fila) {
     if (fila->fim == fila->tamanho) {
         return 1;
     }
@@ -60,23 +60,43 @@ int enfileira(fila_t* fila, int valor) {
 //desenfileirar
 
 int desenfileira(fila_t* fila) {
-    if (fila_cheia(fila)) {
-        return -1;
+    if (fila_vazia(fila)) {
+        return EXIT_FAILURE;
     }
     int elemento = fila->elementos[fila->inicio];
-    fila->inicio = (fila->inicio+ 1) % fila->tamanho;
+    fila->inicio = (fila->inicio + 1) % fila->capacidade;
     fila->tamanho--;
 
     return elemento;
 }
 //inicio
 int fila_inicio(fila_t* fila) {
+    if (fila_vazia(fila)) {
+        return EXIT_FAILURE;
+    }
+
     return fila->inicio;
 }
 
 //fim
 int fila_fim(fila_t* fila) {
+    if (fila_vazia(fila)) {
+        return EXIT_FAILURE;
+    }
+
+    if (fila->fim == 0) {
+        return fila->elementos[fila->capacidade-1];
+    }
+
     return fila->fim;
+}
+
+//elemento X
+int fila_busca(fila_t* fila, int posicao) {
+    if (fila_vazia(fila)) {
+        return EXIT_FAILURE;
+    }
+    return fila->elementos[posicao];
 }
 
 //tamanho
@@ -90,5 +110,3 @@ void fila_destruir(fila_t* fila) {
     free(fila->elementos);
     free(fila);
 }
-
-
