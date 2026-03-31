@@ -27,5 +27,9 @@ int fila_cheia(fila_t* fila);
 
 void enfileira(fila_t* fila, int valor);
 int desenfileira(fila_t* fila);
+int fila_inicio(fila_t* fila);
+int fila_fim(fila_t* fila);
+int fila_tamanho(fila_t* fila);
+void fila_destruir(fila_t* fila);
 
 #endif

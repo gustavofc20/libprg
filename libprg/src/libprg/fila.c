@@ -12,6 +12,20 @@ typedef struct fila {
 } fila_t;
 
 
+//criar
+
+fila_t* fila_cria(int capacidade) {
+
+    fila_t* fila = malloc(sizeof(fila_t));
+    fila->inicio = 0;
+    fila->fim = 0;
+    fila->tamanho = 0;
+    fila->elementos = malloc(capacidade * sizeof(int));
+    fila->capacidade = capacidade;
+
+    return fila;
+}
+
 //vazia
 int fila_vazio(fila_t* fila) {
     if (fila->fim == fila->tamanho) {
@@ -25,20 +39,6 @@ int fila_cheia(fila_t* fila) {
         return 1;
     }
     return 0;
-}
-
-//criar
-
-fila_t* fila_cria(int capacidade) {
-
-    fila_t* fila = malloc(sizeof(fila_t));
-    fila->inicio = 0;
-    fila->fim = 0;
-    fila->tamanho = 0;
-    fila->elementos = malloc(capacidade * sizeof(int));
-    fila->capacidade = capacidade;
-
-    return fila;
 }
 
 //enfileirar
@@ -68,8 +68,25 @@ int desenfileira(fila_t* fila) {
     return elemento;
 }
 //inicio
-
+int fila_inicio(fila_t* fila) {
+    return fila->inicio;
+}
 
 //fim
+int fila_fim(fila_t* fila) {
+    return fila->fim;
+}
+
+//tamanho
+int fila_tamanho(fila_t* fila) {
+    return fila->tamanho;
+}
 
 //destruir
+void fila_destruir(fila_t* fila) {
+
+    free(fila->elementos);
+    free(fila);
+}
+
+
