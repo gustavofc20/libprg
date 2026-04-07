@@ -53,7 +53,7 @@ int empilhar(pilha_t* pilha, int valor) {
 }
 
 int desempilhar(pilha_t *pilha) {
-    if (pilha_cheia(pilha) == 1)
+    if (pilha_vazia(pilha) == 1)
         return -1;
 
     int valor = pilha->elementos[pilha->topo];
