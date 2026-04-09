@@ -21,7 +21,7 @@ pilha_t* pilha_cria(int capacidade) {
 }
 
 int pilha_cheia(pilha_t *pilha) {
-    if (pilha->capacidade >= pilha->topo)
+    if (pilha->topo >= pilha->capacidade - 1)
         return 1;
     return 0;
 }
@@ -38,7 +38,6 @@ void pilha_libera(pilha_t* pilha) {
 }
 
 int empilhar(pilha_t* pilha, int valor) {
-
     if (pilha_cheia(pilha) == 1) {
         pilha->capacidade *= 2;
         pilha->elementos = realloc(pilha->elementos,pilha->capacidade * sizeof(int));
