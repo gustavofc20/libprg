@@ -69,3 +69,9 @@ int topo_pilha(pilha_t *pilha) {
 int tamanho_pilha(pilha_t *pilha) {
     return pilha->topo+1;
 }
+
+int valor_indice_pilha(pilha_t *pilha, int indice) {
+    if (indice > pilha->topo)
+        return -1;
+    return pilha->elementos[indice];
+}
