@@ -15,6 +15,7 @@ int empilhar(pilha_t* pilha, int valor);
 int desempilhar(pilha_t *pilha);
 int topo_pilha(pilha_t *pilha);
 int tamanho_pilha(pilha_t *pilha);
+int valor_indice_pilha(pilha_t *pilha, int indice);
 
 //--------fila--------//
 
