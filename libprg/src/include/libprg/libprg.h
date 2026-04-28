@@ -1,5 +1,6 @@
 #ifndef LIBPRG_LIBPRG_H
 #define LIBPRG_LIBPRG_H
+#include <stdbool.h>
 
 //--------PILHA--------//
 
@@ -33,5 +34,15 @@ int fila_fim(fila_t* fila);
 int fila_busca(fila_t* fila, int posicao);
 int fila_tamanho(fila_t* fila);
 void fila_destruir(fila_t* fila);
+
+//--------Lista_Linear--------//
+
+typedef struct lista_linear lista_linear_t;
+
+int inserir_lista_linear(lista_linear_t* lista, int valor);
+int inserir_lista_linear_ordenado(lista_linear_t* lista, int valor);
+int inserir_lista_linear_nao_ordenado(lista_linear_t* lista, int valor);
+bool lista_vazia(lista_linear_t* lista);
+bool cheia_lista_linear(lista_linear_t* lista);
 
 #endif
