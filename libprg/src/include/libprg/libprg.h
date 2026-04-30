@@ -45,4 +45,13 @@ int inserir_lista_linear_nao_ordenado(lista_linear_t* lista, int valor);
 bool lista_vazia(lista_linear_t* lista);
 bool cheia_lista_linear(lista_linear_t* lista);
 
+//--------Lista_Encadeada--------//
+
+typedef struct no no_t;
+
+no_t *criar_lista_encadeada(int valor);
+void inserir_encadeada(no_t **inicio, int valor);
+no_t* buscar_no_encadeada(no_t **inicio, int valor);
+int remover_encadeada(no_t **inicio, int valor);
+
 #endif
