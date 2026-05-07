@@ -37,13 +37,15 @@ void fila_destruir(fila_t* fila);
 
 //--------Lista_Linear--------//
 
-typedef struct lista_linear lista_linear_t;
+typedef struct lista lista_linear_t;
 
-int inserir_lista_linear(lista_linear_t* lista, int valor);
-int inserir_lista_linear_ordenado(lista_linear_t* lista, int valor);
-int inserir_lista_linear_nao_ordenado(lista_linear_t* lista, int valor);
-bool lista_vazia(lista_linear_t* lista);
-bool cheia_lista_linear(lista_linear_t* lista);
+lista_linear_t *criar_lista_linear(int capacidade, int ordenada);
+
+int lista_linear_cheia(lista_linear_t *lista);
+int lista_linear_vazia(lista_linear_t *lista);
+int buscar_lista_linear(lista_linear_t *lista, int elemento);
+int inserir_lista_linear(lista_linear_t *lista, int elemento);
+int remover_lista_linear(lista_linear_t *lista, int valor);
 
 //--------Lista_Encadeada--------//
 
@@ -51,7 +53,8 @@ typedef struct no no_t;
 
 no_t *criar_lista_encadeada(int valor);
 void inserir_encadeada(no_t **inicio, int valor);
-no_t* buscar_no_encadeada(no_t **inicio, int valor);
 int remover_encadeada(no_t **inicio, int valor);
+no_t *buscar_encadeada(no_t **inicio, int valor);
+void destruir_encadeada(no_t **inicio);
 
 #endif

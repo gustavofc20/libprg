@@ -20,57 +20,43 @@ void inserir_encadeada(no_t **inicio, int valor) {
     *inicio = novo_no;
 }
 
-// buscar
-
-no_t* buscar_no_encadeada(no_t **inicio, int valor) {
-
-    no_t *atual = *inicio;
-
-    while(atual != NULL) {
-        if(atual->dado == valor) {
-            return atual;
-        }
-        atual = atual->proximo;
-    }
-
-    return NULL;
-}
-
-// remover
-
 int remover_encadeada(no_t **inicio, int valor) {
-
     no_t *atual = *inicio;
     no_t *anterior = NULL;
 
-    while(atual != NULL) {
-        if(atual->dado == valor) {
-            if (anterior == NULL) {
+    while (atual != NULL) {
+        if (atual->dado == valor) {
+            if (anterior == NULL)
                 *inicio = atual->proximo;
-            }else {
+            else
                 anterior->proximo = atual->proximo;
-            }
 
             free(atual);
-            return 0;
+            return 1;
         }
         anterior = atual;
         atual = atual->proximo;
     }
-
-    return -1;
+    return 0;
 }
 
+no_t *buscar_encadeada(no_t **inicio, int valor) {
+    no_t *atual = *inicio;
 
-// destruir
+    while (atual != NULL) {
+        if (atual->dado == valor)
+            return atual;
+
+        atual = atual->proximo;
+    }
+    return NULL;
+}
 
 void destruir_encadeada(no_t **inicio) {
-
     no_t *atual = *inicio;
-    no_t *proximo = NULL;
 
-    while(atual != NULL) {
-        proximo = atual->proximo;
+    while (atual != NULL) {
+        no_t *proximo = atual->proximo;
         free(atual);
         atual = proximo;
     }
