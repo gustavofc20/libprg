@@ -57,4 +57,14 @@ int remover_encadeada(no_t **inicio, int valor);
 no_t *buscar_encadeada(no_t **inicio, int valor);
 void destruir_encadeada(no_t **inicio);
 
+//--------Lista_Encadeada_dupla--------//
+
+typedef struct nod nod_t;
+
+nod_t *criar_lista_encadeada_dupla(int valor);
+void inserir_encadeada_dupla(nod_t **inicio, int valor);
+nod_t *buscar_encadeada_dupla(nod_t **inicio, int valor);
+int remover_encadeada_dupla(nod_t **inicio, int valor);
+void destruir_encadeada_dupla(nod_t **inicio);
+
 #endif
