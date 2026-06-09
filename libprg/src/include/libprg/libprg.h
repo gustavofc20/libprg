@@ -74,4 +74,12 @@ typedef struct dicionario dicionario_t;
 dicionario_t *criar_dicionario(int m);
 int inserir_hash(dicionario_t *dicionario, char *chave, int valor);
 
+
+//--------ALGORITMOS DE ORDENAÇÃO --------//
+
+int *bubble_sort(int *vetor, int tamanho);
+int *insertion_sort(int *vetor, int tamanho);
+int *selection_sort(int *vetor, int tamanho);
+int *merge_sort(int *vetor, int esquerda, int direita);
+
 #endif
