@@ -67,4 +67,11 @@ nod_t *buscar_encadeada_dupla(nod_t **inicio, int valor);
 int remover_encadeada_dupla(nod_t **inicio, int valor);
 void destruir_encadeada_dupla(nod_t **inicio);
 
+//--------TABELA DE DISPERSÃO--------//
+typedef struct noh noh_t;
+typedef struct dicionario dicionario_t;
+
+dicionario_t *criar_dicionario(int m);
+int inserir_hash(dicionario_t *dicionario, char *chave, int valor);
+
 #endif
