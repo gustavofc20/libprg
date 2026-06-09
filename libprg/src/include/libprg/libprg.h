@@ -75,12 +75,36 @@ dicionario_t *criar_dicionario(int m);
 int inserir_hash(dicionario_t *dicionario, char *chave, int valor);
 
 
-//--------ALGORITMOS DE ORDENAÇÃO --------//
+//-------- ALGORITMOS DE ORDENAÇÃO --------//
 
 int *bubble_sort(int *vetor, int tamanho);
 int *insertion_sort(int *vetor, int tamanho);
 int *selection_sort(int *vetor, int tamanho);
 int *merge_sort(int *vetor, int esquerda, int direita);
 
+//-------- ÁRVORE --------//
+typedef struct noa noa_t;
+
+noa_t *criar_noa(int dado);
+noa_t *adicionar_noa(noa_t *raiz, int dado);
+noa_t* remover_noa(noa_t *raiz, int dado);
+void travessia_emordem(noa_t *raiz);
+void travessia_preordem(noa_t *raiz);
+void travessia_posordem(noa_t *raiz);
+
+
+//-------- ÁRVORE AVL --------//
+typedef struct noavl noavl_t;
+
+noavl_t *criar_noavl(int dado);
+int altura_avl(noavl_t *raiz);
+int fator_balanceamento(noavl_t *raiz);
+noavl_t *adicionar_noavl(noavl_t *raiz, int dado);
+noavl_t* remover_noavl(noavl_t *raiz, int dado);
+noavl_t* rotacao_esquerda(noavl_t* raiz);
+noavl_t* rotacao_direita(noavl_t* raiz);
+noavl_t* rotacao_dupla_direita(noavl_t *raiz);
+noavl_t* rotacao_dupla_esquerda(noavl_t *raiz);
+noavl_t* balancear_avl(noavl_t* raiz);
 
 #endif
