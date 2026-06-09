@@ -72,6 +72,7 @@ int *merge(int *vetor, int esquerda, int meio, int direita) {
 }
 
 int *merge_sort(int *vetor, int esquerda, int direita) {
+
     if (esquerda < direita) {
         int meio = esquerda + (direita - esquerda) / 2;
         merge_sort(vetor, esquerda, meio);
