@@ -1,7 +1,8 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "libprg/libprg.h"
 
-#define max(a, b) (a > b ? a : b);
+#define max(a, b) (a > b ? a : b)
 
 typedef struct noavl {
     int dado;
@@ -143,4 +144,56 @@ noavl_t* balancear_avl(noavl_t* raiz) {
         return rotacao_dupla_esquerda(raiz);
     }
     return raiz;
+}
+
+void travessia_emordem_avl(noavl_t* raiz) {
+    if (raiz != NULL) {
+        travessia_emordem_avl(raiz->esquerda);
+        printf("%d ", raiz->dado);
+        travessia_emordem_avl(raiz->direita);
+    }
+}
+
+void travessia_preordem_avl(noavl_t* raiz) {
+    if (raiz != NULL) {
+        printf("%d ", raiz->dado);
+        travessia_preordem_avl(raiz->esquerda);
+        travessia_preordem_avl(raiz->direita);
+    }
+}
+
+void travessia_posordem_avl(noavl_t* raiz) {
+    if (raiz != NULL) {
+        travessia_posordem_avl(raiz->esquerda);
+        travessia_posordem_avl(raiz->direita);
+        printf("%d ", raiz->dado);
+    }
+}
+
+void imprimir_nivel_avl(noavl_t *raiz, int nivel) {
+    if (raiz == NULL)
+        return;
+
+    if (nivel == 0) {
+        printf("%d ", raiz->dado);
+        return;
+    }
+
+    imprimir_nivel_avl(raiz->esquerda, nivel - 1);
+    imprimir_nivel_avl(raiz->direita, nivel - 1);
+}
+
+void travessia_largura_avl(noavl_t *raiz) {
+    int altura = altura_avl(raiz);
+
+    for (int i = 0; i <= altura; i++)
+        imprimir_nivel_avl(raiz, i);
+}
+
+void destruir_noavl(noavl_t *raiz) {
+    if (raiz != NULL) {
+        destruir_noavl(raiz->esquerda);
+        destruir_noavl(raiz->direita);
+        free(raiz);
+    }
 }
