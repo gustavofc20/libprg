@@ -77,10 +77,47 @@ void travessia_preordem(noa_t *raiz) {
 
 void travessia_posordem(noa_t *raiz) {
     if (raiz != NULL) {
-        travessia_preordem(raiz->esquerda);
-        travessia_preordem(raiz->direita);
+        travessia_posordem(raiz->esquerda);
+        travessia_posordem(raiz->direita);
         printf("%d ", raiz->dado);
     }
 }
 
-// destruir
+void destruir_noa(noa_t *raiz) {
+    if (raiz != NULL) {
+        destruir_noa(raiz->esquerda);
+        destruir_noa(raiz->direita);
+        free(raiz);
+    }
+}
+
+int maior_valor_noa(noa_t *raiz) {
+    noa_t *atual = raiz;
+
+    while (atual->direita != NULL)
+        atual = atual->direita;
+
+    return atual->dado;
+}
+
+int menor_valor_noa(noa_t *raiz) {
+    noa_t *atual = raiz;
+
+    while (atual->esquerda != NULL)
+        atual = atual->esquerda;
+
+    return atual->dado;
+}
+
+int altura_noa(noa_t *raiz) {
+    if (raiz == NULL)
+        return -1;
+
+    int altura_esquerda = altura_noa(raiz->esquerda);
+    int altura_direita = altura_noa(raiz->direita);
+
+    if (altura_esquerda > altura_direita)
+        return 1 + altura_esquerda;
+
+    return 1 + altura_direita;
+}
