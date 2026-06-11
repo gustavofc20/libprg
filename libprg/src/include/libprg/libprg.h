@@ -81,6 +81,7 @@ int *bubble_sort(int *vetor, int tamanho);
 int *insertion_sort(int *vetor, int tamanho);
 int *selection_sort(int *vetor, int tamanho);
 int *merge_sort(int *vetor, int esquerda, int direita);
+int *quick_sort(int *vetor, int inicio, int fim);
 
 //-------- ÁRVORE --------//
 typedef struct noa noa_t;

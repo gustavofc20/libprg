@@ -10,6 +10,7 @@ int *bubble_sort(int *vetor, int tamanho) {
             }
         }
     }
+    return vetor;
 }
 
 int *insertion_sort(int *vetor, int tamanho) {
@@ -22,6 +23,7 @@ int *insertion_sort(int *vetor, int tamanho) {
         }
         vetor[j + 1] = chave;
     }
+    return vetor;
 }
 
 int *selection_sort(int *vetor, int tamanho) {
@@ -37,6 +39,7 @@ int *selection_sort(int *vetor, int tamanho) {
             vetor[min] = aux;
         }
     }
+    return vetor;
 }
 
 int *merge(int *vetor, int esquerda, int meio, int direita) {
@@ -72,12 +75,42 @@ int *merge(int *vetor, int esquerda, int meio, int direita) {
 }
 
 int *merge_sort(int *vetor, int esquerda, int direita) {
-
     if (esquerda < direita) {
         int meio = esquerda + (direita - esquerda) / 2;
         merge_sort(vetor, esquerda, meio);
         merge_sort(vetor, meio + 1, direita);
         merge(vetor, esquerda, meio, direita);
+    }
+    return vetor;
+}
+
+void trocar_posicao(int *a, int *b) {
+    int aux = *a;
+    *a = *b;
+    *b = aux;
+}
+
+int particiona(int *vetor, int inicio, int fim) {
+    int pivo = vetor[fim];
+    int i = inicio - 1;
+
+    for (int j = inicio; j <= fim - 1; j++) {
+        if (vetor[j] <= pivo) {
+            i++;
+            trocar_posicao(&vetor[i], &vetor[j]);
+        }
+    }
+    i++;
+    trocar_posicao(&vetor[i], &vetor[fim]);
+
+    return i;
+}
+
+int *quick_sort(int *vetor, int inicio, int fim) {
+    if (inicio < fim) {
+        int pivo = particiona(vetor, inicio, fim);
+        quick_sort(vetor, inicio, pivo - 1);
+        quick_sort(vetor, pivo + 1, fim);
     }
     return vetor;
 }
