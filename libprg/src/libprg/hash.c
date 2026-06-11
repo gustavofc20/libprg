@@ -21,7 +21,7 @@ dicionario_t *criar_dicionario(int m) {
         return NULL;
 
     dicionario = malloc(sizeof(dicionario_t));
-    dicionario->vetor = malloc(m * sizeof(noh_t*));
+    dicionario->vetor = calloc(m, sizeof(noh_t*));
     dicionario->tamanho = m;
 
     return dicionario;
@@ -50,10 +50,79 @@ int inserir_hash(dicionario_t *dicionario, char *chave, int valor) {
         return -1;
     }
     no->valor = valor;
-    // TODO tratar colisões
-    no->proximo = NULL;
-
+    no->proximo = dicionario->vetor[indice];
     dicionario->vetor[indice] = no;
 
     return 0;
+}
+
+int buscar_hash(dicionario_t *dicionario, char *chave) {
+    int indice = hash(chave, dicionario->tamanho);
+
+    noh_t *atual = dicionario->vetor[indice];
+
+    while (atual != NULL) {
+        if (strcmp(atual->chave, chave) == 0)
+            return atual->valor;
+
+        atual = atual->proximo;
+    }
+
+    return -1;
+}
+
+int remover_hash(dicionario_t *dicionario, char *chave) {
+    int indice = hash(chave, dicionario->tamanho);
+
+    noh_t *atual = dicionario->vetor[indice];
+    noh_t *anterior = NULL;
+
+    while (atual != NULL) {
+        if (strcmp(atual->chave, chave) == 0) {
+            if (anterior == NULL)
+                dicionario->vetor[indice] = atual->proximo;
+            else
+                anterior->proximo = atual->proximo;
+
+            free(atual->chave);
+            free(atual);
+
+            return 0;
+        }
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    return -1;
+}
+
+void imprimir_hash(dicionario_t *dicionario) {
+    for (int i = 0; i < dicionario->tamanho; i++) {
+        noh_t *atual = dicionario->vetor[i];
+
+        while (atual != NULL) {
+            printf("%s -> %d\n", atual->chave, atual->valor);
+            atual = atual->proximo;
+        }
+    }
+}
+
+void destruir_hash(dicionario_t *dicionario) {
+    if (dicionario == NULL)
+        return;
+
+    for (int i = 0; i < dicionario->tamanho; i++) {
+        noh_t *atual = dicionario->vetor[i];
+
+        while (atual != NULL) {
+            noh_t *proximo = atual->proximo;
+
+            free(atual->chave);
+            free(atual);
+
+            atual = proximo;
+        }
+    }
+    free(dicionario->vetor);
+    free(dicionario);
 }
